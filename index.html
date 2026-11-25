@@ -1,0 +1,1689 @@
+```html
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jai Club – Official Login, Register, App Download & Earning Guide</title>
+  <meta name="description" content="Complete guide to Jai Club login, registration steps, APK download, Wingo color prediction logic, permanent salary system, and fast withdrawals." />
+
+  <!-- Google Fonts: Inter & Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome for Crisp Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              indigo: '#241459',
+              purple: '#6B21A8',
+              violet: '#9333EA',
+              magenta: '#C026D3',
+              gold: '#FACC15',
+              cyan: '#06B6D4',
+              dark: '#141226',
+              card: '#1E1B38',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #ffffff;
+      color: #1e293b;
+      overflow-x: hidden;
+    }
+
+    /* Signature Purple-to-Magenta Gradient Pill Heading with Left Gold Accent */
+    .pill-header-purple {
+      background: linear-gradient(90deg, #1E135B 0%, #5B21B6 55%, #C026D3 100%);
+      border-left: 6px solid #FACC15;
+      box-shadow: 0 10px 25px -5px rgba(91, 33, 182, 0.28);
+    }
+
+    /* Soft White/Lavender Sub-heading Pill with Cyan Left Accent */
+    .pill-header-sub {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F5F3FF 100%);
+      border-left: 6px solid #06B6D4;
+      box-shadow: 0 6px 20px -4px rgba(30, 27, 75, 0.08);
+      border-top: 1px solid #EDE9FE;
+      border-right: 1px solid #EDE9FE;
+      border-bottom: 1px solid #EDE9FE;
+    }
+
+    /* Yellow Accent Banner Header */
+    .pill-header-yellow {
+      background: linear-gradient(90deg, #FDE047 0%, #FACC15 100%);
+      box-shadow: 0 6px 18px -4px rgba(250, 204, 21, 0.35);
+    }
+
+    /* Signature Coral-to-Blue Gradient Button (Matches App Mockups) */
+    .btn-coral-blue {
+      background: linear-gradient(90deg, #FB7185 0%, #A855F7 50%, #38BDF8 100%);
+      box-shadow: 0 8px 20px -4px rgba(168, 85, 247, 0.45);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-coral-blue:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px -4px rgba(168, 85, 247, 0.6);
+    }
+
+    /* Hero Register Download Pill Button */
+    .btn-hero-cta {
+      background: linear-gradient(90deg, #0EA5E9 0%, #6366F1 50%, #D946EF 100%);
+      box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.5);
+      transition: all 0.25s ease;
+    }
+    .btn-hero-cta:hover {
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 14px 30px -5px rgba(217, 70, 239, 0.55);
+    }
+
+    /* App Screenshot Frame Wrapper */
+    .app-mockup-frame {
+      background-color: #141226;
+      border: 3px solid #7C3AED;
+      border-radius: 24px;
+      box-shadow: 0 15px 35px -10px rgba(88, 28, 135, 0.3);
+      overflow: hidden;
+    }
+
+    /* Custom Table Alternating Rows */
+    .table-striped tbody tr:nth-child(odd) {
+      background-color: #FFFFFF;
+    }
+    .table-striped tbody tr:nth-child(even) {
+      background-color: #F3EFFF;
+    }
+
+    /* Smooth FAQ Accordion */
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+    }
+    .faq-item.active .faq-content {
+      max-height: 350px;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    /* Toast Notification */
+    #toast-notification {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-purple-200 selection:text-purple-900">
+
+  <!-- Toast Notification Banner (Replaces alert()) -->
+  <div id="toast-notification" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 translate-y-4">
+    <div class="bg-slate-900 text-white px-5 py-3 rounded-full shadow-2xl flex items-center gap-2.5 text-sm font-medium border border-purple-500/40">
+      <i class="fa-solid fa-circle-check text-emerald-400"></i>
+      <span id="toast-message">Copied to clipboard!</span>
+    </div>
+  </div>
+
+  <!-- Top Sticky Minimal Header -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-purple-100">
+    <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2.5">
+        <!-- Custom SVG Emblem matching Jai Club Logo -->
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-sky-400 via-indigo-600 to-fuchsia-600 flex items-center justify-center shadow-md text-white font-extrabold text-sm">
+          <i class="fa-solid fa-crown text-yellow-300 text-xs"></i>
+        </div>
+        <span class="font-display font-extrabold text-lg tracking-tight bg-gradient-to-r from-indigo-900 via-purple-700 to-fuchsia-600 bg-clip-text text-transparent dyn-brand-name">
+          Jai Club
+        </span>
+      </a>
+
+      <div class="flex items-center gap-2">
+        <a href="#official-links" class="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-purple-700 bg-purple-50 hover:bg-purple-100 px-3 py-2 rounded-full transition">
+          <i class="fa-solid fa-shield-check"></i> Verified Links
+        </a>
+        <a href="https://jaiclub.games/" target="_blank" rel="noopener noreferrer" class="dyn-register-link btn-hero-cta text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-full inline-flex items-center gap-1.5">
+          <span>Register</span>
+          <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container (Mobile-First Single Column Editorial Guide Layout) -->
+  <main id="top" class="max-w-2xl mx-auto px-4 pt-6 pb-16 space-y-10">
+
+    <!-- 1. HERO SECTION -->
+    <section class="text-center space-y-5">
+      <!-- Jai Club Logo Card -->
+      <div class="mx-auto w-56 sm:w-64 p-5 bg-white rounded-3xl border-2 border-purple-300 shadow-lg shadow-purple-100/80 relative overflow-hidden">
+        <div class="absolute -top-6 -right-6 w-20 h-20 bg-purple-100 rounded-full blur-xl"></div>
+        <div class="absolute -bottom-6 -left-6 w-20 h-20 bg-sky-100 rounded-full blur-xl"></div>
+
+        <!-- Custom SVG Illustration of Jai Club Logo -->
+        <svg viewBox="0 0 260 150" class="w-full h-auto relative z-10" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="jaiGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#38BDF8"/>
+              <stop offset="100%" stop-color="#1D4ED8"/>
+            </linearGradient>
+            <linearGradient id="clubGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#C084FC"/>
+              <stop offset="100%" stop-color="#581C87"/>
+            </linearGradient>
+            <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#F472B6"/>
+              <stop offset="50%" stop-color="#9333EA"/>
+              <stop offset="100%" stop-color="#3B82F6"/>
+            </linearGradient>
+          </defs>
+          <!-- Crown -->
+          <path d="M168 26 L176 12 L188 22 L200 10 L204 28 Z" fill="#C084FC" stroke="#4C1D95" stroke-width="2"/>
+          <!-- Purple Club Circle -->
+          <circle cx="176" cy="58" r="34" fill="url(#ringGrad)" stroke="#311068" stroke-width="3"/>
+          <circle cx="176" cy="58" r="24" fill="#F5F3FF"/>
+          <!-- Clover/Club Icon -->
+          <circle cx="176" cy="51" r="7" fill="#7E22CE"/>
+          <circle cx="169" cy="61" r="7" fill="#7E22CE"/>
+          <circle cx="183" cy="61" r="7" fill="#7E22CE"/>
+          <path d="M174 62 L178 62 L180 71 L172 71 Z" fill="#7E22CE"/>
+          <!-- Shooting Star Right -->
+          <polygon points="222,42 226,51 236,52 228,58 231,68 222,62 213,68 216,58 208,52 218,51" fill="#FACC15" stroke="#B45309" stroke-width="1.5"/>
+          <!-- Shooting Star Left -->
+          <polygon points="56,92 60,100 69,101 62,107 64,116 56,111 48,116 50,107 43,101 52,100" fill="#38BDF8" stroke="#1E3A8A" stroke-width="1.5"/>
+          <!-- JAI Text -->
+          <text x="34" y="76" font-family="Poppins, sans-serif" font-weight="900" font-size="52" fill="url(#jaiGrad)" stroke="#1E1B4B" stroke-width="3.5" paint-order="stroke">JAI</text>
+          <!-- CLUB Text -->
+          <text x="72" y="124" font-family="Poppins, sans-serif" font-weight="900" font-size="48" fill="url(#clubGrad)" stroke="#1E1B4B" stroke-width="3.5" paint-order="stroke">CLUB</text>
+        </svg>
+        <p class="text-[11px] font-bold uppercase tracking-widest text-purple-700 mt-1 dyn-brand-name">Jai Club Official</p>
+      </div>
+
+      <!-- Primary Register Download CTA Button -->
+      <div class="pt-1">
+        <a href="https://jaiclub.games/" target="_blank" rel="noopener noreferrer" class="dyn-register-link btn-hero-cta inline-flex items-center justify-center gap-3 text-white font-display font-bold text-lg px-9 py-3.5 rounded-full w-full sm:w-auto min-w-[260px]">
+          <span>Register download</span>
+          <i class="fa-solid fa-download text-base"></i>
+        </a>
+      </div>
+
+      <!-- Intro Paragraph -->
+      <p class="text-left text-slate-700 text-[15px] sm:text-base leading-relaxed">
+        In this guide, you’ll discover everything about <a href="https://jaiclub.games/" target="_blank" rel="noopener noreferrer" class="dyn-register-link text-indigo-600 font-semibold hover:underline"><span class="dyn-brand-name">Jai Club</span> login</a>, including registration steps, <strong class="text-slate-900">app download, features, and how the platform works</strong>, ways to earn rewards, and <strong class="text-slate-900">how to withdraw your earnings quickly</strong> and securely. Check new game updates on <a href="#alternatives" class="text-indigo-600 font-semibold hover:underline">DmPlay</a>.
+      </p>
+
+      <!-- Quick App Details Table -->
+      <div class="rounded-2xl overflow-hidden border border-purple-200 shadow-md">
+        <table class="w-full text-center border-collapse table-striped text-sm sm:text-base">
+          <thead>
+            <tr class="bg-gradient-to-r from-indigo-900 via-purple-700 to-fuchsia-600 text-white font-bold">
+              <th class="py-3.5 px-4 w-1/2 border-r border-white/20">Feature</th>
+              <th class="py-3.5 px-4 w-1/2">Details</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-purple-100 text-slate-800 font-medium">
+            <tr>
+              <td class="py-3.5 px-4 border-r border-purple-100">App Name</td>
+              <td class="py-3.5 px-4 font-bold text-indigo-600 dyn-brand-name">Jai Club</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-4 border-r border-purple-100">Latest Version</td>
+              <td class="py-3.5 px-4 dyn-app-version">3.1</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-4 border-r border-purple-100">Platform Type</td>
+              <td class="py-3.5 px-4 text-xs sm:text-sm leading-snug">Color Prediction, Jili, Limbo, and Aviator</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-4 border-r border-purple-100">App Size</td>
+              <td class="py-3.5 px-4 dyn-app-size">12MB</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-4 border-r border-purple-100">Official Website</td>
+              <td class="py-3.5 px-4 break-all">
+                <a href="https://jaiclub.games/" target="_blank" rel="noopener noreferrer" class="dyn-register-link dyn-site-url-text text-indigo-600 font-semibold hover:underline">https://jaiclub.games/</a>
+              </td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-4 border-r border-purple-100">Referral Code</td>
+              <td class="py-3.5 px-4">
+                <button onclick="copyReferralCode()" class="inline-flex items-center gap-2 font-extrabold text-slate-900 bg-purple-100/80 hover:bg-purple-200 px-3 py-1 rounded-lg transition cursor-pointer" title="Click to copy invite code">
+                  <span class="dyn-ref-code">36262116285</span>
+                  <i class="fa-regular fa-copy text-purple-700 text-xs"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-4 border-r border-purple-100">Welcome Bonus</td>
+              <td class="py-3.5 px-4 font-bold text-emerald-600 dyn-welcome-bonus">Up to ₹100</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 2. TABLE OF CONTENTS -->
+    <section class="bg-slate-50/80 border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-sm">
+      <div class="flex items-center justify-between">
+        <h2 class="text-lg font-bold text-slate-900">Table of Contents</h2>
+        <button id="toc-toggle-btn" onclick="toggleTOC()" class="w-9 h-9 rounded-lg border border-slate-300 bg-white flex items-center justify-center text-slate-600 hover:bg-slate-100 transition" aria-label="Toggle Table of Contents">
+          <i class="fa-solid fa-list-ul"></i>
+        </button>
+      </div>
+      <nav id="toc-list" class="mt-3 text-sm text-slate-700 space-y-1.5 leading-relaxed">
+        <ol class="space-y-1.5">
+          <li><a href="#top" class="hover:text-purple-700">1. <span class="dyn-brand-name">Jai Club</span> App</a></li>
+          <li>
+            <a href="#why-choose" class="hover:text-purple-700">2. Why Choose <span class="dyn-brand-name">Jai Club</span>?</a>
+            <ul class="pl-5 text-xs sm:text-sm text-slate-600 mt-1">
+              <li><a href="#how-it-works" class="hover:text-purple-700">2.0.1. How <span class="dyn-brand-name">Jai Club</span> Platform Works</a></li>
+            </ul>
+          </li>
+          <li><a href="#register-guide" class="hover:text-purple-700">3. How to Register on <span class="dyn-brand-name">Jai Club</span> (Easy Steps)</a></li>
+          <li><a href="#login-guide" class="hover:text-purple-700">4. <span class="dyn-brand-name">Jai Club</span> Login – How to Sign In</a></li>
+          <li><a href="#download-guide" class="hover:text-purple-700">5. <span class="dyn-brand-name">Jai Club</span> App Download &amp; Installation Guide</a></li>
+          <li><a href="#game-categories" class="hover:text-purple-700">6. Game Categories on <span class="dyn-brand-name">Jai Club</span></a></li>
+          <li><a href="#deposit-bank" class="hover:text-purple-700">7. How to Deposit &amp; Add Bank Account in <span class="dyn-brand-name">Jai Club</span></a></li>
+          <li><a href="#wingo-guide" class="hover:text-purple-700">8. How to Play Wingo Colour Prediction on <span class="dyn-brand-name">Jai Club</span></a></li>
+          <li><a href="#refer-earn" class="hover:text-purple-700">9. <span class="dyn-brand-name">Jai Club</span> Refer &amp; Earn Program</a></li>
+          <li><a href="#agent-salary" class="hover:text-purple-700">10. Permanent Salary System &amp; Daily Invite Bonus</a></li>
+          <li><a href="#withdraw-guide" class="hover:text-purple-700">11. How to Withdraw Money &amp; Earning Proofs</a></li>
+          <li><a href="#gift-code" class="hover:text-purple-700">12. How to Use a <span class="dyn-brand-name">Jai Club</span> Gift Code</a></li>
+          <li><a href="#customer-support" class="hover:text-purple-700">13. How to Contact Customer Support</a></li>
+          <li><a href="#official-links" class="hover:text-purple-700">14. Official Verified Website Links</a></li>
+          <li><a href="#alternatives" class="hover:text-purple-700">15. <span class="dyn-brand-name">Jai Club</span> Alternatives</a></li>
+          <li><a href="#faq-section" class="hover:text-purple-700">16. Frequently Asked Questions &amp; Conclusion</a></li>
+        </ol>
+      </nav>
+    </section>
+
+    <!-- 3. WHY CHOOSE JAI CLUB -->
+    <section id="why-choose" class="space-y-4">
+      <div class="pill-header-purple rounded-2xl py-3.5 px-6 text-center">
+        <h2 class="text-white font-display font-bold text-lg sm:text-xl">
+          Why Choose <span class="font-normal dyn-brand-name">Jai Club</span>?
+        </h2>
+      </div>
+
+      <p class="text-slate-700 text-[15px] sm:text-base leading-relaxed">
+        <span class="text-indigo-600 font-semibold dyn-brand-name">Jai Club</span> is a modern and fast-growing <strong class="text-slate-900">online gaming platform</strong> that offers a variety of prediction-based and interactive games such as <strong class="text-slate-900">Wingo, K3, 5D, Slots, Plinko, Limbo, and Aviator</strong>.
+      </p>
+
+      <div id="how-it-works" class="pill-header-yellow rounded-2xl py-3 px-5">
+        <h3 class="text-slate-900 font-bold text-base sm:text-lg">
+          How <span class="dyn-brand-name">Jai Club</span> Platform Works
+        </h3>
+      </div>
+
+      <ul class="list-disc pl-6 space-y-2 text-slate-700 text-[15px] sm:text-base">
+        <li>Create your account using your mobile number</li>
+        <li>Complete verification through OTP confirmation</li>
+        <li>Add funds to your wallet securely</li>
+        <li>Select from popular games like <strong class="text-slate-900">Colour Prediction, WinGo, K3, 5D, Slots, and Aviator</strong></li>
+        <li>Your winnings are credited instantly to your wallet</li>
+        <li>Withdraw your earnings quickly after completing the required conditions</li>
+      </ul>
+    </section>
+
+    <!-- 4. HOW TO REGISTER ON JAI CLUB -->
+    <section id="register-guide" class="space-y-5">
+      <div class="pill-header-purple rounded-2xl py-3.5 px-6 text-center">
+        <h2 class="text-white font-display font-bold text-lg sm:text-xl">
+          How to Register on <span class="font-normal dyn-brand-name">Jai Club</span> (Easy Steps)
+        </h2>
+      </div>
+
+      <p class="text-slate-700 text-[15px] sm:text-base leading-relaxed">
+        Getting started on <span class="text-indigo-600 font-semibold dyn-brand-name">Jai Club</span> is simple, fast, and beginner-friendly. Follow these steps to create your account:
+      </p>
+
+      <!-- Visual App Register Screen Mockup -->
+      <div class="app-mockup-frame max-w-sm mx-auto text-white">
+        <!-- App Top Bar -->
+        <div class="bg-[#191633] px-4 py-3 flex items-center justify-between border-b border-white/10">
+          <i class="fa-solid fa-chevron-left text-slate-300 text-sm"></i>
+          <span class="font-display font-extrabold text-base tracking-wide bg-gradient-to-r from-sky-400 to-fuchsia-400 bg-clip-text text-transparent dyn-brand-name">JAI CLUB</span>
+          <span class="text-xs font-semibold flex items-center gap-1 bg-white/10 px-2 py-0.5 rounded-full">🇺🇸 EN</span>
+        </div>
+        <!-- Gradient Banner -->
+        <div class="bg-gradient-to-r from-rose-400 via-purple-500 to-sky-400 px-5 py-4">
+          <h4 class="font-bold text-lg">Register</h4>
+          <p class="text-xs text-white/90 mt-0.5">Please register by phone number or email</p>
+        </div>
+        <!-- Form Body -->
+        <div class="p-5 space-y-4 bg-[#141226]">
+          <div class="text-center border-b border-purple-500/40 pb-2">
+            <i class="fa-solid fa-mobile-screen-button text-purple-400 text-lg block mb-1"></i>
+            <span class="text-xs font-bold text-purple-300">Register your phone</span>
+          </div>
+
+          <div class="space-y-1.5">
+            <label class="text-xs text-slate-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-phone text-purple-400"></i> Phone number
+            </label>
+            <div class="flex gap-2">
+              <div class="bg-[#232042] px-3 py-2.5 rounded-xl text-xs font-semibold text-slate-200 flex items-center gap-1">
+                +91 <i class="fa-solid fa-chevron-down text-[10px]"></i>
+              </div>
+              <div class="bg-[#232042] px-3 py-2.5 rounded-xl text-xs text-slate-400 flex-1">
+                Please enter the phone number
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-1.5">
+            <label class="text-xs text-slate-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-lock text-purple-400"></i> Set password
+            </label>
+            <div class="bg-[#232042] px-3 py-2.5 rounded-xl text-xs text-slate-400 flex justify-between items-center">
+              <span>Set password</span>
+              <i class="fa-regular fa-eye-slash"></i>
+            </div>
+          </div>
+
+          <div class="space-y-1.5">
+            <label class="text-xs text-slate-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-lock text-purple-400"></i> Confirm password
+            </label>
+            <div class="bg-[#232042] px-3 py-2.5 rounded-xl text-xs text-slate-400 flex justify-between items-center">
+              <span>Confirm password</span>
+              <i class="fa-regular fa-eye-slash"></i>
+            </div>
+          </div>
+
+          <div class="space-y-1.5">
+            <label class="text-xs text-slate-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-ticket text-purple-400"></i> Invite code
+            </label>
+            <div class="bg-[#232042] px-3 py-2.5 rounded-xl text-xs font-bold text-white flex justify-between items-center">
+              <span class="dyn-ref-code">36262116285</span>
+              <button onclick="copyReferralCode()" class="text-purple-400 hover:text-purple-300 text-[11px]">Copy</button>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 text-[11px] text-slate-300">
+            <span class="w-4 h-4 rounded-full bg-purple-500 text-white flex items-center justify-center text-[9px]"><i class="fa-solid fa-check"></i></span>
+            <span>I have read and agree <span class="text-rose-400">【Privacy Agreement】</span></span>
+          </div>
+
+          <a href="https://jaiclub.games/" target="_blank" rel="noopener noreferrer" class="dyn-register-link btn-coral-blue block text-center text-white font-bold text-sm py-3 rounded-full">
+            Register
+          </a>
+          <a href="https://jaiclub.games/" target="_blank" rel="noopener noreferrer" class="dyn-register-link block text-center text-xs text-slate-300 border border-purple-500/40 py-2.5 rounded-full hover:bg-white/5 transition">
+            I have an account <span class="text-purple-400 font-bold">Login</span>
+          </a>
+        </div>
+      </div>
+
+      <ul class="list-disc pl-6 space-y-2 text-slate-700 text-[15px] sm:text-base">
+        <li>Visit the official <a href="https://jaiclub.games/" target="_blank" rel="noopener noreferrer" class="dyn-register-link text-indigo-600 font-semibold hover:underline"><span class="dyn-brand-name">Jai Club</span> registration page</a> using your mobile or desktop browser</li>
+        <li>Enter your active mobile number to begin the signup process</li>
+        <li>Create a strong and secure password for your account</li>
+        <li>Complete OTP verification sent to your registered mobile number</li>
+        <li>Enter a referral or invite code (<code class="bg-purple-100 text-purple-800 px-1.5 py-0.5 rounded font-bold dyn-ref-code">36262116285</code>) to unlock bonus benefits</li>
+      </ul>
+    </section>
+
+    <!-- 5. JAI CLUB LOGIN GUIDE -->
+    <section id="login-guide" class="space-y-5">
+      <div class="pill-header-purple rounded-2xl py-3.5 px-6 text-center">
+        <h2 class="text-white font-display font-bold text-lg sm:text-xl">
+          <span class="font-normal dyn-brand-name">Jai Club</span> Login – How to Sign In
+        </h2>
+      </div>
+
+      <p class="text-slate-700 text-[15px] sm:text-base leading-relaxed">
+        <a href="https://jaiclub.games/" target="_blank" rel="noopener noreferrer" class="dyn-register-link text-indigo-600 font-semibold hover:underline">Logging</a> into <span class="text-indigo-600 font-semibold dyn-brand-name">Jai Club</span> Lottery Game is quick and hassle-free. If you already have an account, follow these simple steps:
+      </p>
+
+      <!-- Visual App Login Mockup -->
+      <div class="app-mockup-frame max-w-sm mx-auto text-white">
+        <div class="bg-[#191633] px-4 py-3 flex items-center justify-between border-b border-white/10">
+          <i class="fa-solid fa-chevron-left text-slate-300 text-sm"></i>
+          <span class="font-display font-extrabold text-base bg-gradient-to-r from-sky-400 to-fuchsia-400 bg-clip-text text-transparent dyn-brand-name">JAI CLUB</span>
+          <span class="text-xs font-semibold bg-white/10 px-2 py-0.5 rounded-full">🇺🇸 EN</span>
+        </div>
+        <div class="bg-gradient-to-r from-rose-400 via-purple-500 to-sky-400 px-5 py-4">
+          <h4 class="font-bold text-lg">Log in</h4>
+          <p class="text-[11px] text-white/90 mt-0.5">Please log in with your phone number or email. If you forget your password, please contact customer service.</p>
+        </div>
+        <div class="p-5 space-y-4 bg-[#141226]">
+          <div class="grid grid-cols-2 border-b border-white/10 text-center text-xs font-semibold">
+            <div class="pb-2.5 border-b-2 border-purple-400 text-purple-300">
+              <i class="fa-solid fa-mobile-screen block mb-1"></i> Phone number
+            </div>
+            <div class="pb-2.5 text-slate-400">
+              <i class="fa-solid fa-envelope block mb-1"></i> Email Login
+            </div>
+          </div>
+          <div class="space-y-3">
+            <div class="flex gap-2">
+              <div class="bg-[#232042] px-3 py-2.5 rounded-xl text-xs font-semibold text-slate-200">+91</div>
+              <div class="bg-[#232042] px-3 py-2.5 rounded-xl text-xs text-slate-400 flex-1">Please enter the phone number</div>
+            </div>
+            <div class="bg-[#232042] px-3 py-2.5 rounded-xl text-xs text-slate-400 flex justify-between items-center">
+              <span>Password</span>
+              <i class="fa-regular fa-eye-slash"></i>
+            </div>
+          </div>
+          <a href="https://jaiclub.games/" target="_blank" rel="noopener noreferrer" class="dyn-register-link btn-coral-blue block text-center text-white font-bold text-sm py-3 rounded-full">
+            Log in
+          </a>
+        </div>
+      </div>
+
+      <ul class="list-disc pl-6 space-y-2 text-slate-700 text-[15px] sm:text-base">
+        <li>Tap on the <span class="text-indigo-600 font-semibold">Login</span> option available on the homepage</li>
+        <li>Enter your registered mobile number and password</li>
+        <li>Click on <span class="text-indigo-600 font-semibold">Sign In</span> to access your account instantly</li>
+      </ul>
+      <p class="text-slate-700 text-[15px] sm:text-base leading-relaxed">
+        After <span class="text-indigo-600 font-semibold">logging</span> in, you can easily check your wallet balance, explore different game categories, and track your activity in one place.
+      </p>
+    </section>
+
+    <!-- 6. APP DOWNLOAD & INSTALLATION GUIDE -->
+    <section id="download-guide" class="space-y-5">
+      <div class="pill-header-purple rounded-2xl py-3.5 px-6 text-center">
+        <h2 class="text-white font-display font-bold text-lg sm:text-xl">
+          <span class="font-normal dyn-brand-name">Jai Club</span> App Download &amp; Installation Guide
+        </h2>
+      </div>
+
+      <p class="text-slate-700 text-[15px] sm:text-base leading-relaxed">
+        Downloading and installing the <span class="text-indigo-600 font-semibold dyn-brand-name">Jai Club</span> APK on your Android device is quick and easy. Since the app is provided as an APK file, users need to download it from the official source and install it manually for secure access.
+      </p>
+
+      <div class="text-center">
+        <a href="https://jaiclub.games/" target="_blank" rel="noopener noreferrer" class="dyn-register-link btn-hero-cta inline-flex items-center justify-center gap-2 text-white font-bold text-base px-10 py-3.5 rounded-full shadow-lg">
+          <i class="fa-solid fa-cloud-arrow-down"></i>
+          <span>Download Now</span>
+        </a>
+      </div>
+
+      <div class="pill-header-sub rounded-2xl py-3.5 px-5">
+        <h3 class="text-indigo-700 font-bold text-base sm:text-lg">
+          Steps to Download and Install <span class="dyn-brand-name">Jai Club</span> App
+        </h3>
+      </div>
+
+      <!-- 10-Step Visual Infographic Grid (Recreating Screenshot 11143) -->
+      <div class="bg-gradient-to-b from-indigo-900 via-purple-900 to-indigo-950 rounded-3xl p-4 sm:p-6 text-white shadow-xl border-2 border-purple-400/50">
+        <div class="text-center mb-4">
+          <span class="inline-block bg-white/10 text-yellow-300 text-xs font-bold px-3 py-1 rounded-full mb-1">APK GUIDE</span>
+          <h4 class="font-display font-extrabold text-lg sm:text-xl">Game Download Steps</h4>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-slate-900 text-xs">
+          <div class="bg-purple-50 rounded-xl p-3 flex items-center gap-3 relative">
+            <span class="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center shrink-0">1</span>
+            <div><p class="font-bold">Visit the Official Website</p><span class="inline-block mt-1 bg-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">Visit Website</span></div>
+          </div>
+          <div class="bg-purple-50 rounded-xl p-3 flex items-center gap-3">
+            <span class="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center shrink-0">2</span>
+            <div><p class="font-bold">Click Download App / APK Download</p><span class="inline-block mt-1 bg-purple-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">Download</span></div>
+          </div>
+          <div class="bg-purple-50 rounded-xl p-3 flex items-center gap-3">
+            <span class="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center shrink-0">3</span>
+            <div><p class="font-bold">Wait for APK file to download</p></div>
+          </div>
+          <div class="bg-purple-50 rounded-xl p-3 flex items-center gap-3">
+            <span class="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center shrink-0">4</span>
+            <div><p class="font-bold">Go to Settings → Security / Privacy</p></div>
+          </div>
+          <div class="bg-purple-50 rounded-xl p-3 flex items-center gap-3">
+            <span class="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center shrink-0">5</span>
+            <div><p class="font-bold">Enable Install from Unknown Sources</p></div>
+          </div>
+          <div class="bg-purple-50 rounded-xl p-3 flex items-center gap-3">
+            <span class="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center shrink-0">6</span>
+            <div><p class="font-bold">Open the downloaded APK file</p></div>
+          </div>
+          <div class="bg-purple-50 rounded-xl p-3 flex items-center gap-3">
+            <span class="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center shrink-0">7</span>
+            <div><p class="font-bold">Tap on Install to begin</p></div>
+          </div>
+          <div class="bg-purple-50 rounded-xl p-3 flex items-center gap-3">
+            <span class="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center shrink-0">8</span>
+            <div><p class="font-bold">Once installed, open the app</p></div>
+          </div>
+          <div class="bg-purple-50 rounded-xl p-3 flex items-center gap-3 sm:col-span-2">
+            <span class="w-6 h-6 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center shrink-0">9</span>
+            <div><p class="font-bold">Register a new account or log in with your existing details to play</p></div>
+          </div>
+        </div>
+      </div>
+
+      <ul class="list-disc pl-6 space-y-2 text-slate-700 text-[15px] sm:text-base">
+        <li>Enable <strong class="text-slate-900">Install from Unknown Sources</strong> in Android Settings</li>
+        <li>Open the downloaded APK file from your browser downloads</li>
+        <li>Tap on <strong class="text-slate-900">Install</strong> to begin the installation process</li>
+        <li>Once installed, open the app and register or log in</li>
+      </ul>
+    </section>
+
+    <!-- 7. GAME CATEGORIES -->
+    <section id="game-categories" class="space-y-5">
+      <div class="pill-header-purple rounded-2xl py-3.5 px-6 text-center">
+        <h2 class="text-white font-display font-bold text-lg sm:text-xl">
+          Game Categories on <span class="font-normal dyn-brand-name">Jai Club</span>
+        </h2>
+      </div>
+
+      <p class="text-slate-700 text-[15px] sm:text-base leading-relaxed">
+        <span class="text-indigo-600 font-semibold dyn-brand-name">Jai Club</span> offers a variety of game categories to match every player’s interest and style. Whether you like quick prediction games for instant action or prefer relaxing with casual games, there’s something for everyone here.
+      </p>
+
+      <!-- Popular Games Lobby Grid Mockup -->
+      <div class="app-mockup-frame p-4 bg-[#141226] text-white">
+        <div class="flex items-center justify-between mb-3">
+          <span class="bg-gradient-to-r from-indigo-600 to-purple-600 text-xs font-bold px-3.5 py-1 rounded-full">Popular</span>
+          <span class="text-xs text-slate-400 font-semibold">ALL <i class="fa-solid fa-chevron-right text-[10px]"></i></span>
+        </div>
+        <div class="grid grid-cols-3 gap-2.5 sm:gap-3.5">
+          <!-- WINGO -->
+          <div class="rounded-2xl bg-gradient-to-b from-orange-400 to-red-600 p-3 text-center shadow-md flex flex-col items-center justify-between aspect-square">
+            <div class="flex gap-1 mt-1">
+              <span class="w-7 h-7 rounded-full bg-red-600 border-2 border-white text-xs font-black flex items-center justify-center shadow">7</span>
+              <span class="w-7 h-7 rounded-full bg-purple-700 border-2 border-white text-xs font-black flex items-center justify-center shadow">8</span>
+            </div>
+            <span class="font-display font-black text-sm sm:text-base tracking-tight drop-shadow">WINGO</span>
+          </div>
+          <!-- AVIATOR -->
+          <div class="rounded-2xl bg-gradient-to-b from-rose-700 to-red-950 p-3 text-center shadow-md flex flex-col items-center justify-between aspect-square">
+            <i class="fa-solid fa-plane-departure text-2xl sm:text-3xl text-rose-200 mt-2"></i>
+            <span class="font-display font-bold text-xs sm:text-sm tracking-wide">AVIATOR</span>
+          </div>
+          <!-- CRICKET -->
+          <div class="rounded-2xl bg-gradient-to-b from-lime-400 to-emerald-600 p-3 text-center shadow-md flex flex-col items-center justify-between aspect-square">
+            <i class="fa-solid fa-baseball-bat-ball text-2xl sm:text-3xl text-white mt-2"></i>
+            <span class="font-display font-bold text-xs sm:text-sm tracking-wide">CRICKET</span>
+          </div>
+          <!-- PUBG 1MIN -->
+          <div class="rounded-2xl bg-gradient-to-b from-amber-700 to-stone-900 p-3 text-center shadow-md flex flex-col items-center justify-between aspect-square">
+            <i class="fa-solid fa-helmet-un text-2xl sm:text-3xl text-amber-300 mt-2"></i>
+            <span class="font-display font-bold text-[11px] sm:text-xs tracking-wide">PUBG 1MIN</span>
+          </div>
+          <!-- SKY PLANE -->
+          <div class="rounded-2xl bg-gradient-to-b from-sky-400 to-blue-600 p-3 text-center shadow-md flex flex-col items-center justify-between aspect-square">
+            <i class="fa-solid fa-jet-fighter-up text-2xl sm:text-3xl text-yellow-300 mt-2"></i>
+            <span class="font-display font-bold text-xs sm:text-sm tracking-wide">AVIATOR PRO</span>
+          </div>
+          <!-- VORTEX -->
+          <div class="rounded-2xl bg-gradient-to-b from-fuchsia-600 via-purple-800 to-indigo-950 p-3 text-center shadow-md flex flex-col items-center justify-between aspect-square">
+            <i class="fa-solid fa-bullseye text-2xl sm:text-3xl text-amber-400 mt-2"></i>
+            <span class="font-display font-bold text-xs sm:text-sm tracking-wide">VORTEX</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. DEPOSIT & ADD BANK ACCOUNT -->
+    <section id="deposit-bank" class="space-y-5">
+      <div class="pill-header-purple rounded-2xl py-3.5 px-6 text-center">
+        <h2 class="text-white font-display font-bold text-lg sm:text-xl">
+          How to Deposit &amp; Add Bank Account in <span class="font-normal dyn-brand-name">Jai Club</span>
+        </h2>
+      </div>
+
+      <div class="pill-header-sub rounded-2xl py-3.5 px-5">
+        <h3 class="text-indigo-700 font-bold text-base sm:text-lg">Step-by-Step Process</h3>
+      </div>
+
+      <ul class="list-disc pl-6 space-y-3 text-slate-700 text-[15px] sm:text-base">
+        <li>
+          <strong class="text-indigo-700">Login to <span class="dyn-brand-name">Jai Club</span> Account:</strong> Open the official <span class="dyn-brand-name">Jai Club</span> app or website and sign in using your registered mobile number and password.
+        </li>
+        <li>
+          <strong class="text-slate-900">Go to Wallet or Profile Section:</strong> After logging in, navigate to the <strong class="text-slate-900">Profile</strong> or <strong class="text-slate-900">Wallet</strong> section from the main dashboard.
+        </li>
+        <li>
+          <strong class="text-slate-900">Select “Add Bank Account” Option:</strong> Look for the <strong class="text-slate-900">Bank Account</strong> or <strong class="text-slate-900">Add Account</strong> option inside the withdrawal or payment settings.
+        </li>
+        <li>
+          <strong class="text-slate-900">Enter Your Bank Details:</strong> Fill in the required information carefully:
+          <ul class="list-circle pl-6 mt-1.5 space-y-1 text-slate-600">
+            <li>Account Holder Name</li>
+            <li>Bank Name</li>
+            <li>Account Number</li>
+            <li>IFSC Code</li>
+          </ul>
+        </li>
+        <li>
+          <strong class="text-slate-900">Confirm and Submit Details:</strong> Double-check all the entered information and tap <strong class="text-slate-900">Save</strong> to submit the form.
+        </li>
+      </ul>
+    </section>
+
+    <!-- 9. WINGO COLOUR PREDICTION GUIDE -->
+    <section id="wingo-guide" class="space-y-5">
+      <div class="pill-header-purple rounded-2xl py-3.5 px-6 text-center">
+        <h2 class="text-white font-display font-bold text-lg sm:text-xl">
+          How to Play Wingo Colour Prediction on <span class="font-normal dyn-brand-name">Jai Club</span>
+        </h2>
+      </div>
+
+      <p class="text-slate-700 text-[15px] sm:text-base leading-relaxed">
+        <strong class="text-slate-900">Wingo</strong> is one of the most popular fast-paced games on <span class="text-indigo-600 font-semibold dyn-brand-name">Jai Club</span>, where players make quick predictions on colours or numbers within short time intervals.
+      </p>
+
+      <div class="pill-header-purple rounded-2xl py-3.5 px-6 text-center">
+        <h3 class="text-white font-display font-bold text-base sm:text-lg">
+          Steps to Play Wingo on <span class="font-normal dyn-brand-name">Jai Club</span>
+        </h3>
+      </div>
+
+      <ul class="list-disc pl-6 space-y-2 text-slate-700 text-[15px] sm:text-base">
+        <li>Log in to your account using your registered mobile number</li>
+        <li>Open the <strong class="text-slate-900">Wingo</strong> section from the main dashboard</li>
+        <li>Select a round duration such as <strong class="text-slate-900">30 seconds, 1 minute, 3 minutes, or 5 minutes</strong></li>
+        <li>
+          Choose your prediction type:
+          <ul class="list-disc pl-6 mt-1 space-y-1">
+            <li>Colour (Red, Green, Violet)</li>
+            <li>Number (0–9)</li>
+          </ul>
+        </li>
+        <li>Enter your preferred amount and confirm your prediction before the timer ends</li>
+        <li>Wait for the round result to be announced</li>
+        <li>If your prediction is correct, your winnings are added instantly to your <span class="dyn-brand-name">Jai Club</span> wallet</li>
+      </ul>
+
+      <hr class="border-slate-300" />
+
+      <div class="pill-header-sub rounded-2xl py-3.5 px-5">
+        <h3 class="text-indigo-700 font-bold text-base sm:text-lg">Wingo Colour &amp; Number Logic</h3>
+      </div>
+
+      <!-- Visual Color & Number Logic Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div class="rounded-2xl bg-emerald-50 border border-emerald-200 p-4 flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <span class="w-4 h-4 rounded-full bg-emerald-500"></span>
+            <span class="font-bold text-emerald-900">Green</span>
+          </div>
+          <span class="font-extrabold text-emerald-700 bg-white px-3 py-1 rounded-lg shadow-sm">1, 3, 7, 9</span>
+        </div>
+        <div class="rounded-2xl bg-rose-50 border border-rose-200 p-4 flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <span class="w-4 h-4 rounded-full bg-rose-500"></span>
+            <span class="font-bold text-rose-900">Red</span>
+          </div>
+          <span class="font-extrabold text-rose-700 bg-white px-3 py-1 rounded-lg shadow-sm">2, 4, 6, 8</span>
+        </div>
+        <div class="rounded-2xl bg-purple-50 border border-purple-200 p-4 flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <span class="w-4 h-4 rounded-full bg-purple-600"></span>
+            <span class="font-bold text-purple-900">Violet</span>
+          </div>
+          <span class="font-extrabold text-purple-700 bg-white px-3 py-1 rounded-lg shadow-sm">0, 5</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. REFER & EARN PROGRAM -->
+    <section id="refer-earn" class="space-y-5">
+      <div class="pill-header-purple rounded-2xl py-3.5 px-6 text-center">
+        <h2 class="text-white font-display font-bold text-lg sm:text-xl">
+          <span class="font-normal dyn-brand-name">Jai Club</span> Refer &amp; Earn Program
+        </h2>
+      </div>
+
+      <p class="text-slate-700 text-[15px] sm:text-base leading-relaxed">
+        The <strong class="text-slate-900">Refer &amp; Earn program</strong> is a smart way to increase your rewards by inviting others to join the platform. It allows users to earn extra benefits while sharing the gaming experience with friends and growing their network.
+      </p>
+
+      <!-- Agency Dashboard App Mockup -->
+      <div class="app-mockup-frame max-w-sm mx-auto text-white bg-[#141226]">
+        <div class="bg-[#191633] px-4 py-3 text-center font-bold text-base border-b border-white/10">Agency</div>
+        <div class="bg-gradient-to-r from-rose-400 via-purple-500 to-sky-400 p-5 text-center">
+          <div class="text-3xl font-extrabold">0</div>
+          <span class="inline-block bg-[#191633]/80 text-purple-200 text-xs px-4 py-1 rounded-full mt-1">Yesterday's total commission</span>
+          <p class="text-[11px] text-white/90 mt-1.5">Upgrade the level to increase commission income</p>
+        </div>
+        <div class="p-4 space-y-3">
+          <div class="grid grid-cols-2 gap-2 bg-[#1E1B38] rounded-2xl p-3 text-center text-xs">
+            <div class="border-r border-white/10 pr-2 space-y-1">
+              <div class="font-bold text-purple-300"><i class="fa-solid fa-user-group mr-1"></i>Direct subordinates</div>
+              <div class="text-slate-400 text-[11px]">0 register • <span class="text-emerald-400">0 deposit</span></div>
+            </div>
+            <div class="pl-2 space-y-1">
+              <div class="font-bold text-purple-300"><i class="fa-solid fa-users mr-1"></i>Team subordinates</div>
+              <div class="text-slate-400 text-[11px]">0 register • <span class="text-emerald-400">0 deposit</span></div>
+            </div>
+          </div>
+
+          <button onclick="copyReferralCode()" class="btn-coral-blue w-full py-2.5 rounded-full text-slate-950 font-bold text-xs cursor-pointer">
+            Copy Invitation Code &amp; Link
+          </button>
+
+          <div class="bg-[#1E1B38] rounded-xl px-3.5 py-2.5 flex items-center justify-between text-xs">
+            <span class="text-slate-300"><i class="fa-solid fa-envelope-open-text text-purple-400 mr-2"></i>Copy invitation code</span>
+            <button onclick="copyReferralCode()" class="font-bold text-white flex items-center gap-1.5 cursor-pointer">
+              <span class="dyn-ref-code">36262116285</span>
+              <i class="fa-regular fa-copy text-purple-400"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pill-header-purple rounded-2xl py-3.5 px-6 text-center">
+        <h3 class="text-white font-display font-bold text-base sm:text-lg">
+          How to Use <span class="font-normal dyn-brand-name">Jai Club</span> Referral Program
+        </h3>
+      </div>
+
+      <ul class="list-disc pl-6 space-y-2 text-slate-700 text-[15px] sm:text-base">
+        <li>Copy your personal referral link or unique invite code (<strong class="dyn-ref-code">36262116285</strong>)</li>
+        <li>Share it with friends, family, or online communities</li>
+        <li>Ask them to register using your referral link</li>
+        <li>Once they join and start playing, your referrals will be tracked automatically</li>
+        <li>Earn bonuses and rewards based on their activity on <span class="dyn-brand-name">Jai Club</span></li>
+      </ul>
+
+      <p class="text-slate-700 text-[15px] sm:text-base leading-relaxed">
+        👉 The more users you invite to <span class="dyn-brand-name">Jai Club</span>, the more rewards you can unlock, making it an easy and effective way to earn alongside your gameplay. 🚀
+      </p>
+    </section>
+
+    <!-- 11. AGENT PERMANENT SALARY & DAILY INVITE BONUS -->
+    <section id="agent-salary" class="space-y-6">
+      <div class="pill-header-purple rounded-2xl py-3.5 px-6 text-center">
+        <h2 class="text-white font-display font-bold text-lg sm:text-xl">
+          Why Should You Choose <span class="font-normal dyn-brand-name">Jai Club</span> as an Agent?
+        </h2>
+      </div>
+
+      <p class="text-slate-700 text-[15px] sm:text-base leading-relaxed">
+        Choosing the right platform as an agent is important for long-term growth and a smooth experience. <span class="text-indigo-600 font-semibold dyn-brand-name">Jai Club</span> offers a user-friendly system along with competitive benefits that make it a preferred choice for many users.
+      </p>
+
+      <div class="pill-header-sub rounded-2xl py-3.5 px-5">
+        <h3 class="text-indigo-700 font-bold text-base sm:text-lg">
+          Permanent Salary System for <span class="dyn-brand-name">Jai Club</span> Agents
+        </h3>
+      </div>
+
+      <p class="text-slate-700 text-[15px] sm:text-base leading-relaxed">
+        <span class="text-indigo-600 font-semibold dyn-brand-name">Jai Club</span> offers a permanent salary system for active agents, allowing them to earn daily rewards based on total team deposit performance.
+      </p>
+
+      <div class="pill-header-yellow rounded-2xl py-3 px-5">
+        <h4 class="text-slate-900 font-bold text-base sm:text-lg">Daily Salary System</h4>
+      </div>
+
+      <!-- Daily Salary Table -->
+      <div class="rounded-2xl overflow-hidden border border-purple-200 shadow-md">
+        <table class="w-full text-center border-collapse table-striped text-sm sm:text-base">
+          <thead>
+            <tr class="bg-gradient-to-r from-indigo-900 via-purple-700 to-fuchsia-600 text-white font-bold">
+              <th class="py-3.5 px-3 border-r border-white/20">Team Members</th>
+              <th class="py-3.5 px-3 border-r border-white/20">Minimum Team Deposit Amount</th>
+              <th class="py-3.5 px-3">Daily Salary Amount</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-purple-100 text-slate-800 font-medium">
+            <tr><td class="py-3 px-3 border-r border-purple-100">10</td><td class="py-3 px-3 border-r border-purple-100">₹5,000</td><td class="py-3 px-3 font-bold text-indigo-700">₹600</td></tr>
+            <tr><td class="py-3 px-3 border-r border-purple-100">25</td><td class="py-3 px-3 border-r border-purple-100">₹10,000</td><td class="py-3 px-3 font-bold text-indigo-700">₹1,300</td></tr>
+            <tr><td class="py-3 px-3 border-r border-purple-100">40</td><td class="py-3 px-3 border-r border-purple-100">₹20,000</td><td class="py-3 px-3 font-bold text-indigo-700">₹2,500</td></tr>
+            <tr><td class="py-3 px-3 border-r border-purple-100">60</td><td class="py-3 px-3 border-r border-purple-100">₹35,000</td><td class="py-3 px-3 font-bold text-indigo-700">₹4,000</td></tr>
+            <tr><td class="py-3 px-3 border-r border-purple-100">80</td><td class="py-3 px-3 border-r border-purple-100">₹60,000</td><td class="py-3 px-3 font-bold text-indigo-700">₹6,000</td></tr>
+            <tr><td class="py-3 px-3 border-r border-purple-100">100</td><td class="py-3 px-3 border-r border-purple-100">₹80,000</td><td class="py-3 px-3 font-bold text-indigo-700">₹8,000</td></tr>
+            <tr><td class="py-3 px-3 border-r border-purple-100">150</td><td class="py-3 px-3 border-r border-purple-100">₹1,30,000</td><td class="py-3 px-3 font-bold text-indigo-700">₹20,000</td></tr>
+            <tr><td class="py-3 px-3 border-r border-purple-100">200</td><td class="py-3 px-3 border-r border-purple-100">₹5,00,000</td><td class="py-3 px-3 font-bold text-indigo-700">₹50,000</td></tr>
+            <tr><td class="py-3 px-3 border-r border-purple-100">500</td><td class="py-3 px-3 border-r border-purple-100">₹5,00,000</td><td class="py-3 px-3 font-bold text-indigo-700">₹50,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Daily Bonus - Invite Members & Earn More -->
+      <div class="pill-header-purple rounded-2xl py-3.5 px-6 text-center">
+        <h3 class="text-white font-display font-bold text-lg sm:text-xl">
+          Daily Bonus – Invite Members &amp; Earn More
+        </h3>
+      </div>
+
+      <p class="text-slate-700 text-[15px] sm:text-base leading-relaxed">
+        Invite new members and grow your network to unlock exciting daily bonus rewards. The more people you invite and the more they deposit, the higher your bonus earnings.
+      </p>
+
+      <div class="pill-header-sub rounded-2xl py-3.5 px-5">
+        <h4 class="text-indigo-700 font-bold text-base sm:text-lg">Invite Bonus Structure</h4>
+      </div>
+
+      <!-- Invite Bonus Structure Table -->
+      <div class="rounded-2xl overflow-hidden border border-purple-200 shadow-md">
+        <table class="w-full text-center border-collapse table-striped text-sm sm:text-base">
+          <thead>
+            <tr class="bg-gradient-to-r from-indigo-900 via-purple-700 to-fuchsia-600 text-white font-bold">
+              <th class="py-3.5 px-3 border-r border-white/20">Invite Accounts</th>
+              <th class="py-3.5 px-3 border-r border-white/20">Required Deposit</th>
+              <th class="py-3.5 px-3">Bonus Reward</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-purple-100 text-slate-800 font-medium">
+            <tr><td class="py-3 px-3 border-r border-purple-100">1 Person</td><td class="py-3 px-3 border-r border-purple-100">₹300</td><td class="py-3 px-3 font-bold text-emerald-600">₹38</td></tr>
+            <tr><td class="py-3 px-3 border-r border-purple-100">3 People</td><td class="py-3 px-3 border-r border-purple-100">₹300</td><td class="py-3 px-3 font-bold text-emerald-600">₹158</td></tr>
+            <tr><td class="py-3 px-3 border-r border-purple-100">10 People</td><td class="py-3 px-3 border-r border-purple-100">₹500</td><td class="py-3 px-3 font-bold text-emerald-600">₹580</td></tr>
+            <tr><td class="py-3 px-3 border-r border-purple-100">30 People</td><td class="py-3 px-3 border-r border-purple-100">₹800</td><td class="py-3 px-3 font-bold text-emerald-600">₹1,800</td></tr>
+            <tr><td class="py-3 px-3 border-r border-purple-100">50 People</td><td class="py-3 px-3 border-r border-purple-100">₹1,200</td><td class="py-3 px-3 font-bold text-emerald-600">₹2,800</td></tr>
+            <tr><td class="py-3 px-3 border-r border-purple-100">75 People</td><td class="py-3 px-3 border-r border-purple-100">₹1,200</td><td class="py-3 px-3 font-bold text-emerald-600">₹4,500</td></tr>
+            <tr><td class="py-3 px-3 border-r border-purple-100">100 People</td><td class="py-3 px-3 border-r border-purple-100">₹1,200</td><td class="py-3 px-3 font-bold text-emerald-600">₹5,800</td></tr>
+            <tr><td class="py-3 px-3 border-r border-purple-100">200 People</td><td class="py-3 px-3 border-r border-purple-100">₹1,200</td><td class="py-3 px-3 font-bold text-emerald-600">₹11,800</td></tr>
+            <tr><td class="py-3 px-3 border-r border-purple-100">500 People</td><td class="py-3 px-3 border-r border-purple-100">₹1,200</td><td class="py-3 px-3 font-bold text-emerald-600">₹29,000</td></tr>
+            <tr><td class="py-3 px-3 border-r border-purple-100">5000 People</td><td class="py-3 px-3 border-r border-purple-100">₹1,200</td><td class="py-3 px-3 font-bold text-emerald-600">₹3,00,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 12. HOW TO WITHDRAW MONEY & EARNING PROOFS -->
+    <section id="withdraw-guide" class="space-y-5">
+      <div class="pill-header-purple rounded-2xl py-3.5 px-6 text-center">
+        <h2 class="text-white font-display font-bold text-lg sm:text-xl">
+          How to Withdraw Money from <span class="font-normal dyn-brand-name">Jai Club</span>
+        </h2>
+      </div>
+
+      <p class="text-slate-700 text-[15px] sm:text-base leading-relaxed">
+        Withdrawing your earnings from <span class="text-indigo-600 font-semibold dyn-brand-name">Jai Club</span> is simple, fast, and secure. The platform offers smooth withdrawal options, allowing users to transfer their winnings directly to their <strong class="text-slate-900">bank account or UPI ID</strong> without any hassle.
+      </p>
+
+      <div class="space-y-3 text-slate-700 text-[15px] sm:text-base">
+        <div>
+          <h4 class="font-bold text-slate-900">Step 1: Log In to Your Account</h4>
+          <p>Open the official <span class="dyn-brand-name">Jai Club</span> app or website and sign in using your registered mobile number and password.</p>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-900">Step 2: Go to Wallet Section</h4>
+          <p>Navigate to the <strong class="text-slate-900">Wallet</strong> or <strong class="text-slate-900">Withdraw</strong> section from your dashboard.</p>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-900">Step 3: Select Withdrawal Method</h4>
+          <p>Choose your preferred withdrawal option: <strong class="text-slate-900">Bank Account, UPI ID, or USDT</strong>.</p>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-900">Step 4: Enter Withdrawal Amount</h4>
+          <p>Enter the amount you want to withdraw based on the platform limits.</p>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-900">Step 5: Submit Your Request</h4>
+          <p>Review all details carefully and click on the <strong class="text-slate-900">Withdraw</strong> button to complete your request.</p>
+        </div>
+      </div>
+
+      <div class="pill-header-yellow rounded-2xl py-3 px-5">
+        <h3 class="text-slate-900 font-bold text-base sm:text-lg">Withdrawal Details</h3>
+      </div>
+
+      <ul class="list-disc pl-6 space-y-2 text-slate-700 text-[15px] sm:text-base">
+        <li><strong class="text-slate-900">Minimum Withdrawal:</strong> Starts from around ₹100 (may vary)</li>
+        <li><strong class="text-slate-900">Maximum Limit:</strong> Depends on your account level or platform rules</li>
+        <li><strong class="text-slate-900">Processing Time:</strong> Usually processed within a few hours</li>
+        <li><strong class="text-slate-900">Daily Limit:</strong> A limited number of withdrawal requests may be allowed per day</li>
+      </ul>
+
+      <div class="pill-header-purple rounded-2xl py-3.5 px-6 text-center">
+        <h3 class="text-white font-display font-bold text-lg sm:text-xl">
+          <span class="font-normal dyn-brand-name">Jai Club</span> Withdrawal &amp; Earning Proof
+        </h3>
+      </div>
+
+      <!-- Visual Withdrawal History Mockup (Matches Screenshot 11168) -->
+      <div class="app-mockup-frame max-w-sm mx-auto text-white bg-[#141226]">
+        <div class="bg-[#191633] px-4 py-3 flex items-center justify-between border-b border-white/10">
+          <i class="fa-solid fa-chevron-left text-slate-300 text-sm"></i>
+          <span class="font-bold text-sm">Withdrawal history</span>
+          <span class="w-4"></span>
+        </div>
+        <div class="p-3 space-y-2.5 text-xs">
+          <!-- Record 1 -->
+          <div class="bg-[#1E1B38] rounded-xl p-3 space-y-1.5 border border-white/5">
+            <div class="flex justify-between items-center border-b border-white/10 pb-1.5">
+              <span class="bg-rose-500 text-white font-bold px-2.5 py-0.5 rounded text-[11px]">Withdraw</span>
+              <span class="text-emerald-400 font-bold">Completed</span>
+            </div>
+            <div class="flex justify-between"><span class="text-slate-400">Balance</span><span class="text-amber-400 font-bold">₹43,481.00</span></div>
+            <div class="flex justify-between"><span class="text-slate-400">Type</span><span>USDT</span></div>
+            <div class="flex justify-between"><span class="text-slate-400">Time</span><span>2026-04-20 18:20:54</span></div>
+            <div class="flex justify-between"><span class="text-slate-400">Order number</span><span class="text-[11px] text-slate-300">WD2026042018205409478402a</span></div>
+          </div>
+          <!-- Record 2 -->
+          <div class="bg-[#1E1B38] rounded-xl p-3 space-y-1.5 border border-white/5">
+            <div class="flex justify-between items-center border-b border-white/10 pb-1.5">
+              <span class="bg-rose-500 text-white font-bold px-2.5 py-0.5 rounded text-[11px]">Withdraw</span>
+              <span class="text-emerald-400 font-bold">Completed</span>
+            </div>
+            <div class="flex justify-between"><span class="text-slate-400">Balance</span><span class="text-amber-400 font-bold">₹41,759.00</span></div>
+            <div class="flex justify-between"><span class="text-slate-400">Type</span><span>USDT</span></div>
+            <div class="flex justify-between"><span class="text-slate-400">Time</span><span>2026-04-19 12:33:38</span></div>
+            <div class="flex justify-between"><span class="text-slate-400">Order number</span><span class="text-[11px] text-slate-300">WD2026041912333853319096b</span></div>
+          </div>
+          <!-- Record 3 -->
+          <div class="bg-[#1E1B38] rounded-xl p-3 space-y-1.5 border border-white/5">
+            <div class="flex justify-between items-center border-b border-white/10 pb-1.5">
+              <span class="bg-rose-500 text-white font-bold px-2.5 py-0.5 rounded text-[11px]">Withdraw</span>
+              <span class="text-emerald-400 font-bold">Completed</span>
+            </div>
+            <div class="flex justify-between"><span class="text-slate-400">Balance</span><span class="text-amber-400 font-bold">₹43,687.00</span></div>
+            <div class="flex justify-between"><span class="text-slate-400">Type</span><span>USDT</span></div>
+            <div class="flex justify-between"><span class="text-slate-400">Time</span><span>2026-04-18 22:42:09</span></div>
+            <div class="flex justify-between"><span class="text-slate-400">Order number</span><span class="text-[11px] text-slate-300">WD2026041822420926210845b</span></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-slate-700 text-[15px] sm:text-base leading-relaxed">
+        The screenshots shown above represent real user activity and are shared to provide a better understanding of how the platform works. These earning proofs highlight successful withdrawals and wallet updates based on user participation and activity.
+      </p>
+    </section>
+
+    <!-- 13. GIFT CODE REDEMPTION GUIDE -->
+    <section id="gift-code" class="space-y-5">
+      <div class="pill-header-purple rounded-2xl py-3.5 px-6 text-center">
+        <h2 class="text-white font-display font-bold text-lg sm:text-xl">
+          How to Use a <span class="font-normal dyn-brand-name">Jai Club</span> Gift Code
+        </h2>
+      </div>
+
+      <p class="text-slate-700 text-[15px] sm:text-base leading-relaxed">
+        Using a <strong class="text-slate-900">gift code</strong> is a simple way to unlock bonus rewards, special offers, and extra benefits on the platform.
+      </p>
+
+      <!-- Gift Screen Mockup -->
+      <div class="app-mockup-frame max-w-sm mx-auto text-white bg-[#141226]">
+        <div class="bg-[#191633] px-4 py-3 flex items-center justify-between border-b border-white/10">
+          <i class="fa-solid fa-chevron-left text-slate-300 text-sm"></i>
+          <span class="font-bold text-sm">Gift</span>
+          <span class="w-4"></span>
+        </div>
+        <div class="bg-gradient-to-br from-amber-300 via-orange-300 to-amber-500 p-6 text-center">
+          <div class="w-16 h-16 mx-auto bg-white/90 rounded-2xl flex items-center justify-center shadow-lg text-orange-500 text-3xl">
+            <i class="fa-solid fa-gift"></i>
+          </div>
+        </div>
+        <div class="p-5 space-y-3">
+          <div class="text-xs text-slate-300">Hi,<br/><span class="text-white font-semibold">We have a gift for you</span></div>
+          <p class="text-xs text-slate-300 pt-1">Please enter the gift code below</p>
+          <div class="bg-[#232042] px-4 py-3 rounded-full text-xs text-slate-400">Please enter gift code</div>
+          <a href="https://jaiclub.games/" target="_blank" rel="noopener noreferrer" class="dyn-register-link btn-coral-blue block text-center text-slate-950 font-bold text-sm py-2.5 rounded-full">
+            Receive
+          </a>
+        </div>
+      </div>
+
+      <div class="pill-header-sub rounded-2xl py-3.5 px-5">
+        <h3 class="text-indigo-700 font-bold text-base sm:text-lg">
+          Steps to Redeem <span class="dyn-brand-name">Jai Club</span> Gift Code
+        </h3>
+      </div>
+
+      <ul class="list-disc pl-6 space-y-2 text-slate-700 text-[15px] sm:text-base">
+        <li>Log in to your account using your registered mobile number</li>
+        <li>Go to the <strong class="text-slate-900">Gift Code</strong> or <strong class="text-slate-900">Promo Code</strong> section from your dashboard</li>
+        <li>Enter a valid gift code carefully</li>
+        <li>Click on <strong class="text-slate-900">Redeem</strong> or <strong class="text-slate-900">Submit</strong></li>
+        <li>Once verified, the reward will be added to your account or wallet instantly</li>
+      </ul>
+    </section>
+
+    <!-- 14. CUSTOMER SUPPORT -->
+    <section id="customer-support" class="space-y-5">
+      <div class="pill-header-purple rounded-2xl py-3.5 px-6 text-center">
+        <h2 class="text-white font-display font-bold text-lg sm:text-xl">
+          How to Contact <span class="font-normal dyn-brand-name">Jai Club</span> Customer Support
+        </h2>
+      </div>
+
+      <div class="pill-header-sub rounded-2xl py-3.5 px-5">
+        <h3 class="text-indigo-700 font-bold text-base sm:text-lg">Steps to Contact Support</h3>
+      </div>
+
+      <p class="text-slate-700 text-[15px] sm:text-base">Submit your request easily:</p>
+
+      <ul class="list-disc pl-6 space-y-2 text-slate-700 text-[15px] sm:text-base">
+        <li>Open the <strong class="text-slate-900">app</strong> or visit the official website</li>
+        <li>Go to the <strong class="text-slate-900">Contact Us / Support</strong> section</li>
+        <li>Click on the support link to open the <strong class="text-slate-900">live chat or help center</strong></li>
+        <li>Enter your <strong class="text-slate-900"><span class="dyn-brand-name">Jai Club</span> UID number</strong> to identify your account</li>
+        <li>Choose between <strong class="text-slate-900">Self Service Center</strong> or <strong class="text-slate-900">Customer Support / Help Option</strong></li>
+      </ul>
+
+      <div class="text-center pt-1">
+        <a href="https://jaiclub.games/" target="_blank" rel="noopener noreferrer" class="dyn-support-link inline-flex items-center gap-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold text-sm px-6 py-3 rounded-full border border-indigo-200 transition">
+          <i class="fa-solid fa-headset"></i>
+          <span>Open 24/7 Self Service Center</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 15. OFFICIAL VERIFIED WEBSITE LINKS -->
+    <section id="official-links" class="space-y-5">
+      <div class="pill-header-purple rounded-2xl py-3.5 px-6 text-center">
+        <h2 class="text-white font-display font-bold text-lg sm:text-xl">
+          <span class="font-normal dyn-brand-name">Jai Club</span> Official Verified Website Link
+        </h2>
+      </div>
+
+      <p class="text-slate-700 text-[15px] sm:text-base leading-relaxed">
+        <span class="text-indigo-600 font-semibold dyn-brand-name">Jai Club</span> is a fast-growing online entertainment platform offering color prediction, slots, baccarat, and more. Below are verified official and alternative <span class="text-indigo-600 font-semibold dyn-brand-name">Jai Club</span> domains to help users access the platform safely.
+      </p>
+
+      <div class="pill-header-sub rounded-2xl py-3.5 px-5">
+        <h3 class="text-indigo-700 font-bold text-base sm:text-lg">Official Links List</h3>
+      </div>
+
+      <p class="text-slate-700 text-[15px] sm:text-base">
+        Click any link below to visit directly. Check Full <a href="https://jaiclub.games/" target="_blank" rel="noopener noreferrer" class="dyn-register-link text-indigo-600 font-semibold hover:underline">Verified List</a>
+      </p>
+
+      <!-- Verified Domain Table -->
+      <div class="rounded-2xl overflow-hidden border border-purple-200 shadow-md">
+        <table class="w-full text-center border-collapse table-striped text-xs sm:text-base">
+          <thead>
+            <tr class="bg-gradient-to-r from-indigo-900 via-purple-700 to-fuchsia-600 text-white font-bold">
+              <th class="py-3.5 px-2 w-12 border-r border-white/20">#</th>
+              <th class="py-3.5 px-3 border-r border-white/20">Domain</th>
+              <th class="py-3.5 px-3 border-r border-white/20">Description</th>
+              <th class="py-3.5 px-3">Action</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-purple-100 text-slate-800 font-medium">
+            <tr>
+              <td class="py-4 px-2 border-r border-purple-100">1</td>
+              <td class="py-4 px-3 border-r border-purple-100 font-semibold break-all dyn-official-domain">jaiclub00.com</td>
+              <td class="py-4 px-3 border-r border-purple-100">Main Official Domain</td>
+              <td class="py-4 px-3">
+                <a href="https://jaiclub.games/" target="_blank" rel="noopener noreferrer" class="dyn-register-link text-indigo-600 font-bold hover:underline">Open</a>
+              </td>
+            </tr>
+            <tr>
+              <td class="py-4 px-2 border-r border-purple-100">2</td>
+              <td class="py-4 px-3 border-r border-purple-100 font-semibold break-all">jaiclub.games</td>
+              <td class="py-4 px-3 border-r border-purple-100">Official Mirror &amp; APK Portal</td>
+              <td class="py-4 px-3">
+                <a href="https://jaiclub.games/" target="_blank" rel="noopener noreferrer" class="dyn-register-link text-indigo-600 font-bold hover:underline">Open</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 16. JAI CLUB ALTERNATIVES -->
+    <section id="alternatives" class="space-y-5">
+      <div class="pill-header-purple rounded-2xl py-3.5 px-6 text-center">
+        <h2 class="text-white font-display font-bold text-lg sm:text-xl">
+          <span class="font-normal dyn-brand-name">Jai Club</span> Alternatives
+        </h2>
+      </div>
+
+      <p class="text-slate-700 text-[15px] sm:text-base leading-relaxed">
+        If you are looking for platforms similar to <span class="text-indigo-600 font-semibold dyn-brand-name">Jai Club</span>, there are several online gaming options. These platforms provide features like quick game rounds, easy navigation, and multiple game categories for different types of players.
+      </p>
+
+      <div class="space-y-4">
+        <div class="space-y-2">
+          <div class="pill-header-sub rounded-2xl py-3 px-5">
+            <h3 class="text-indigo-700 font-bold text-base sm:text-lg">1. Daman Game</h3>
+          </div>
+          <p class="text-slate-700 text-[15px] sm:text-base leading-relaxed">
+            <span class="text-indigo-600 font-semibold">Daman</span> Game is commonly searched for colour prediction games and fast-play experiences. Users may access wallet features, registration options, and multiple gaming categories.
+          </p>
+        </div>
+
+        <div class="space-y-2">
+          <div class="pill-header-sub rounded-2xl py-3 px-5">
+            <h3 class="text-indigo-700 font-bold text-base sm:text-lg">2. Yaar Win</h3>
+          </div>
+          <p class="text-slate-700 text-[15px] sm:text-base leading-relaxed">
+            <span class="text-indigo-600 font-semibold">YaarWin</span> is another alternative offering games like Wingo, K3, Aviator, Slots, and other prediction formats. Users often search for APK downloads, login guides, and wallet features.
+          </p>
+        </div>
+
+        <div class="space-y-2">
+          <div class="pill-header-sub rounded-2xl py-3 px-5">
+            <h3 class="text-indigo-700 font-bold text-base sm:text-lg">3. Jalwa Game</h3>
+          </div>
+          <p class="text-slate-700 text-[15px] sm:text-base leading-relaxed">
+            <span class="text-indigo-600 font-semibold">Jalwa</span> Game is an online gaming and colour prediction platform where users can enjoy popular games like <strong class="text-slate-900">Wingo, K3, 5D, Poker, Slots, Jili</strong>. It offers easy registration and fast login.
+          </p>
+        </div>
+
+        <div class="space-y-2">
+          <div class="pill-header-sub rounded-2xl py-3 px-5">
+            <h3 class="text-indigo-700 font-bold text-base sm:text-lg">4. DmFirst Game</h3>
+          </div>
+          <p class="text-slate-700 text-[15px] sm:text-base leading-relaxed">
+            <span class="text-indigo-600 font-semibold">Dmfirst</span> Game is a popular online gaming platform that offers a smooth and user-friendly experience for mobile users with a diverse collection of games.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 17. INTERACTIVE FAQ ACCORDION -->
+    <section id="faq-section" class="space-y-3">
+      <p class="text-slate-700 text-sm sm:text-base mb-4">
+        If a user still chooses to use any third-party platform, they do so <strong class="text-slate-900">at their own risk.</strong>
+      </p>
+
+      <!-- FAQ Items -->
+      <div class="space-y-3" id="faq-container">
+        <!-- FAQ 1 -->
+        <div class="faq-item rounded-2xl overflow-hidden shadow-sm">
+          <button onclick="toggleFaq(this)" class="pill-header-purple w-full py-4 px-5 flex items-center justify-between text-left text-white font-bold text-sm sm:text-base cursor-pointer">
+            <span>What is <span class="dyn-brand-name">Jai Club</span>?</span>
+            <i class="fa-solid fa-plus faq-icon text-slate-900 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content bg-purple-50/70 px-5 text-slate-700 text-sm leading-relaxed border-x border-b border-purple-100 rounded-b-2xl">
+            <p class="py-3.5"><span class="dyn-brand-name">Jai Club</span> is an online entertainment and prediction gaming platform featuring Wingo, K3, 5D, Aviator, Slots, and instant reward games.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item rounded-2xl overflow-hidden shadow-sm">
+          <button onclick="toggleFaq(this)" class="pill-header-purple w-full py-4 px-5 flex items-center justify-between text-left text-white font-bold text-sm sm:text-base cursor-pointer">
+            <span>How can I download the <span class="dyn-brand-name">Jai Club</span> app?</span>
+            <i class="fa-solid fa-plus faq-icon text-slate-900 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content bg-purple-50/70 px-5 text-slate-700 text-sm leading-relaxed border-x border-b border-purple-100 rounded-b-2xl">
+            <p class="py-3.5">Click the "Register download" button at the top of this page to visit the official website, download the Android APK file, enable "Install from Unknown Sources", and install it.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item rounded-2xl overflow-hidden shadow-sm">
+          <button onclick="toggleFaq(this)" class="pill-header-purple w-full py-4 px-5 flex items-center justify-between text-left text-white font-bold text-sm sm:text-base cursor-pointer">
+            <span>What is the minimum deposit amount?</span>
+            <i class="fa-solid fa-plus faq-icon text-slate-900 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content bg-purple-50/70 px-5 text-slate-700 text-sm leading-relaxed border-x border-b border-purple-100 rounded-b-2xl">
+            <p class="py-3.5">The minimum deposit amount on <span class="dyn-brand-name">Jai Club</span> typically starts at ₹100 via UPI, ARPay, or USDT.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item rounded-2xl overflow-hidden shadow-sm">
+          <button onclick="toggleFaq(this)" class="pill-header-purple w-full py-4 px-5 flex items-center justify-between text-left text-white font-bold text-sm sm:text-base cursor-pointer">
+            <span>Is <span class="dyn-brand-name">Jai Club</span> safe to use?</span>
+            <i class="fa-solid fa-plus faq-icon text-slate-900 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content bg-purple-50/70 px-5 text-slate-700 text-sm leading-relaxed border-x border-b border-purple-100 rounded-b-2xl">
+            <p class="py-3.5">Always ensure you access <span class="dyn-brand-name">Jai Club</span> through verified official domains (<span class="dyn-official-domain">jaiclub00.com</span>) and play responsibly within your personal budget.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item rounded-2xl overflow-hidden shadow-sm">
+          <button onclick="toggleFaq(this)" class="pill-header-purple w-full py-4 px-5 flex items-center justify-between text-left text-white font-bold text-sm sm:text-base cursor-pointer">
+            <span>What payment methods are supported?</span>
+            <i class="fa-solid fa-plus faq-icon text-slate-900 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content bg-purple-50/70 px-5 text-slate-700 text-sm leading-relaxed border-x border-b border-purple-100 rounded-b-2xl">
+            <p class="py-3.5"><span class="dyn-brand-name">Jai Club</span> supports UPI, Direct Bank Transfer, ARPay, and USDT cryptocurrency for both deposits and withdrawals.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="faq-item rounded-2xl overflow-hidden shadow-sm">
+          <button onclick="toggleFaq(this)" class="pill-header-purple w-full py-4 px-5 flex items-center justify-between text-left text-white font-bold text-sm sm:text-base cursor-pointer">
+            <span>Is <span class="dyn-brand-name">Jai Club</span> available 24/7?</span>
+            <i class="fa-solid fa-plus faq-icon text-slate-900 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content bg-purple-50/70 px-5 text-slate-700 text-sm leading-relaxed border-x border-b border-purple-100 rounded-b-2xl">
+            <p class="py-3.5">Yes, games, wallet transactions, and the Self Service Customer Support Center are available 24 hours a day, 7 days a week.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 7 -->
+        <div class="faq-item rounded-2xl overflow-hidden shadow-sm">
+          <button onclick="toggleFaq(this)" class="pill-header-purple w-full py-4 px-5 flex items-center justify-between text-left text-white font-bold text-sm sm:text-base cursor-pointer">
+            <span>Is <span class="dyn-brand-name">Jai Club</span> available on Play Store?</span>
+            <i class="fa-solid fa-plus faq-icon text-slate-900 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content bg-purple-50/70 px-5 text-slate-700 text-sm leading-relaxed border-x border-b border-purple-100 rounded-b-2xl">
+            <p class="py-3.5">Currently, the Android app is distributed directly via the official website as an APK file, and iOS/desktop users can play directly in the web browser.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 8 -->
+        <div class="faq-item rounded-2xl overflow-hidden shadow-sm">
+          <button onclick="toggleFaq(this)" class="pill-header-purple w-full py-4 px-5 flex items-center justify-between text-left text-white font-bold text-sm sm:text-base cursor-pointer">
+            <span>What is the minimum withdrawal amount?</span>
+            <i class="fa-solid fa-plus faq-icon text-slate-900 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content bg-purple-50/70 px-5 text-slate-700 text-sm leading-relaxed border-x border-b border-purple-100 rounded-b-2xl">
+            <p class="py-3.5">The minimum withdrawal starts from ₹100 once your bank account or UPI ID is linked.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 9 -->
+        <div class="faq-item rounded-2xl overflow-hidden shadow-sm">
+          <button onclick="toggleFaq(this)" class="pill-header-purple w-full py-4 px-5 flex items-center justify-between text-left text-white font-bold text-sm sm:text-base cursor-pointer">
+            <span>Is <span class="dyn-brand-name">Jai Club</span> free to join?</span>
+            <i class="fa-solid fa-plus faq-icon text-slate-900 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content bg-purple-50/70 px-5 text-slate-700 text-sm leading-relaxed border-x border-b border-purple-100 rounded-b-2xl">
+            <p class="py-3.5">Yes, creating an account on <span class="dyn-brand-name">Jai Club</span> is 100% free, and new users can claim a welcome bonus (<span class="dyn-welcome-bonus">Up to ₹100</span>) using invite code <strong class="dyn-ref-code">36262116285</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 18. CONCLUSION & INTERACTIVE STAR RATING -->
+    <section class="space-y-6 pt-2">
+      <div class="pill-header-sub rounded-2xl py-3.5 px-5">
+        <h2 class="text-indigo-700 font-bold text-lg sm:text-xl">Conclusion</h2>
+      </div>
+
+      <p class="text-slate-700 text-[15px] sm:text-base leading-relaxed">
+        <span class="text-indigo-600 font-semibold dyn-brand-name">Jai Club</span> <strong class="text-slate-900">offers a smooth and easy-to-use platform for fast-paced and prediction-based games.</strong> With simple registration, quick payments, and multiple game options, it provides a convenient experience for both new and regular users.
+      </p>
+
+      <p class="text-slate-700 text-[15px] sm:text-base leading-relaxed">
+        By using the platform wisely and staying in control, users can enjoy a balanced and enjoyable gaming experience.
+      </p>
+
+      <!-- Interactive 5-Star Rating Widget (Matches Screenshot 11177) -->
+      <div class="text-center pt-4 space-y-2.5">
+        <h3 class="text-2xl sm:text-3xl font-normal text-slate-800">How useful was this post?</h3>
+        <p class="text-sm text-slate-600">Click on a star to rate it!</p>
+
+        <div id="star-rating-container" class="flex items-center justify-center gap-2 py-2">
+          <button onclick="ratePost(1)" class="star-btn text-3xl sm:text-4xl text-amber-300 hover:scale-110 transition cursor-pointer" aria-label="Rate 1 star"><i class="fa-solid fa-star"></i></button>
+          <button onclick="ratePost(2)" class="star-btn text-3xl sm:text-4xl text-amber-300 hover:scale-110 transition cursor-pointer" aria-label="Rate 2 stars"><i class="fa-solid fa-star"></i></button>
+          <button onclick="ratePost(3)" class="star-btn text-3xl sm:text-4xl text-amber-300 hover:scale-110 transition cursor-pointer" aria-label="Rate 3 stars"><i class="fa-solid fa-star"></i></button>
+          <button onclick="ratePost(4)" class="star-btn text-3xl sm:text-4xl text-amber-300 hover:scale-110 transition cursor-pointer" aria-label="Rate 4 stars"><i class="fa-solid fa-star"></i></button>
+          <button onclick="ratePost(5)" class="star-btn text-3xl sm:text-4xl text-amber-300 hover:scale-110 transition cursor-pointer" aria-label="Rate 5 stars"><i class="fa-solid fa-star"></i></button>
+        </div>
+
+        <p class="text-sm sm:text-base text-slate-700">
+          Average rating <span id="avg-rating">4.9</span> / 5. Vote count: <span id="vote-count">44590659</span>
+        </p>
+        <p id="rating-thankyou" class="text-sm text-slate-700 font-medium">Thank you for rating this post!</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER WITH STEALTH / HIDDEN ADMIN TRIGGER -->
+  <footer class="border-t border-slate-200 bg-slate-50 py-8 px-4 text-center text-xs text-slate-500">
+    <div class="max-w-2xl mx-auto space-y-2">
+      <p>
+        Disclaimer: This informational guide is intended for users aged 18+ only. Online prediction and gaming involve financial risk. Please play responsibly.
+      </p>
+      <p class="pt-1 select-none">
+        <!-- Secret trigger disguised subtly on the copyright symbol / dot -->
+        <span id="secret-admin-trigger" onclick="openAdminPasswordModal()" class="cursor-default" title="">&copy;</span>
+        2026 <span class="dyn-brand-name">Jai Club</span> Official Guide. All Rights Reserved.
+        <span onclick="openAdminPasswordModal()" class="inline-block w-2 h-2 rounded-full bg-slate-200/60 ml-1 cursor-default"></span>
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- HIDDEN PASSWORD MODAL (OPENS ONLY WHEN CLICKING SECRET FOOTER SYMBOL) -->
+  <!-- Default Admin Password: admin123                                      -->
+  <!-- ===================================================================== -->
+  <div id="admin-password-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/70 backdrop-blur-sm p-4">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-purple-100 space-y-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <h3 class="font-bold text-slate-900 text-base">System Verification</h3>
+        </div>
+        <button onclick="closeAdminPasswordModal()" class="w-8 h-8 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-700 flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <p class="text-xs text-slate-500">Enter access password to manage site links and configuration.</p>
+
+      <form onsubmit="verifyAdminPassword(event)" class="space-y-3">
+        <div>
+          <input type="password" id="admin-password-input" placeholder="Enter password" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-purple-600 focus:ring-2 focus:ring-purple-200" required />
+          <p id="admin-password-error" class="text-xs text-rose-600 mt-1.5 hidden">Incorrect password. Please try again.</p>
+        </div>
+        <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-700 to-purple-700 text-white font-bold text-sm hover:opacity-95 transition">
+          Unlock Panel
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- ADMIN PANEL CONTROL DRAWER (HIDDEN UNTIL PASSWORD IS VERIFIED)        -->
+  <!-- ===================================================================== -->
+  <div id="admin-panel-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/75 backdrop-blur-sm p-4 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-purple-200 my-8 space-y-5">
+      <!-- Header -->
+      <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-indigo-600 to-fuchsia-600 text-white flex items-center justify-center shadow">
+            <i class="fa-solid fa-sliders"></i>
+          </div>
+          <div>
+            <h3 class="font-display font-bold text-slate-900 text-lg">Site Control Panel</h3>
+            <p class="text-xs text-slate-500">Live update Register Links, Brand Name, Invite Code &amp; more</p>
+          </div>
+        </div>
+        <button onclick="closeAdminPanel()" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Editable Settings Form -->
+      <form id="admin-settings-form" onsubmit="saveAdminSettings(event)" class="space-y-4 max-h-[65vh] overflow-y-auto pr-1">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Platform / Site Name</label>
+            <input type="text" id="cfg-brand-name" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-purple-600 focus:outline-none" required />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Referral / Invite Code</label>
+            <input type="text" id="cfg-ref-code" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-purple-600 focus:outline-none" required />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Register / Download Link URL (All CTA Buttons)</label>
+          <input type="url" id="cfg-register-url" placeholder="https://jaiclub.games/" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-purple-600 focus:outline-none" required />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Main Official Domain (Table)</label>
+            <input type="text" id="cfg-official-domain" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-purple-600 focus:outline-none" required />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Welcome Bonus Text</label>
+            <input type="text" id="cfg-welcome-bonus" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-purple-600 focus:outline-none" required />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">App Version</label>
+            <input type="text" id="cfg-app-version" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-purple-600 focus:outline-none" required />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">App Size</label>
+            <input type="text" id="cfg-app-size" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-purple-600 focus:outline-none" required />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Customer Support / Telegram Link</label>
+          <input type="url" id="cfg-support-url" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-purple-600 focus:outline-none" required />
+        </div>
+
+        <div class="pt-2 border-t border-slate-100">
+          <label class="block text-xs font-bold text-slate-700 mb-1">Change Admin Password (Optional)</label>
+          <input type="text" id="cfg-new-password" placeholder="Leave blank to keep current password" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-purple-600 focus:outline-none" />
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-2.5 pt-3">
+          <button type="submit" class="flex-1 py-3 rounded-xl bg-gradient-to-r from-indigo-700 via-purple-700 to-fuchsia-600 text-white font-bold text-sm shadow-lg hover:opacity-95 transition cursor-pointer">
+            <i class="fa-solid fa-floppy-disk mr-1.5"></i> Save &amp; Apply Changes
+          </button>
+          <button type="button" onclick="resetDefaultSettings()" class="py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs transition cursor-pointer">
+            Reset Default
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // Default Configuration State
+    const DEFAULT_CONFIG = {
+      brandName: 'Jai Club',
+      registerUrl: 'https://jaiclub.games/',
+      officialDomain: 'jaiclub00.com',
+      refCode: '36262116285',
+      welcomeBonus: 'Up to ₹100',
+      appVersion: '3.1',
+      appSize: '12MB',
+      supportUrl: 'https://jaiclub.games/',
+      adminPassword: 'admin123' // Default password for hidden admin panel
+    };
+
+    const STORAGE_KEY = 'jaiclub_landing_config_v1';
+
+    // Load config from localStorage or fallback to defaults
+    function getSiteConfig() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          return { ...DEFAULT_CONFIG, ...JSON.parse(saved) };
+        }
+      } catch (e) {
+        console.error('Error reading config:', e);
+      }
+      return { ...DEFAULT_CONFIG };
+    }
+
+    // Apply config across all DOM elements dynamically
+    function applySiteConfig() {
+      const cfg = getSiteConfig();
+
+      // Update Page Title
+      document.title = `${cfg.brandName} – Official Login, Register, App Download & Earning Guide`;
+
+      // Update Brand Name occurrences
+      document.querySelectorAll('.dyn-brand-name').forEach(el => {
+        el.textContent = cfg.brandName;
+      });
+
+      // Update Register / Download CTA Links
+      document.querySelectorAll('.dyn-register-link').forEach(el => {
+        el.href = cfg.registerUrl;
+      });
+
+      // Update Website URL display text
+      document.querySelectorAll('.dyn-site-url-text').forEach(el => {
+        el.textContent = cfg.registerUrl;
+      });
+
+      // Update Support Links
+      document.querySelectorAll('.dyn-support-link').forEach(el => {
+        el.href = cfg.supportUrl;
+      });
+
+      // Update Referral Code occurrences
+      document.querySelectorAll('.dyn-ref-code').forEach(el => {
+        el.textContent = cfg.refCode;
+      });
+
+      // Update Official Domain
+      document.querySelectorAll('.dyn-official-domain').forEach(el => {
+        el.textContent = cfg.officialDomain;
+      });
+
+      // Update Welcome Bonus, Version, Size
+      document.querySelectorAll('.dyn-welcome-bonus').forEach(el => {
+        el.textContent = cfg.welcomeBonus;
+      });
+      document.querySelectorAll('.dyn-app-version').forEach(el => {
+        el.textContent = cfg.appVersion;
+      });
+      document.querySelectorAll('.dyn-app-size').forEach(el => {
+        el.textContent = cfg.appSize;
+      });
+    }
+
+    // Toast Helper
+    function showToast(msg) {
+      const toast = document.getElementById('toast-notification');
+      const msgEl = document.getElementById('toast-message');
+      msgEl.textContent = msg;
+      toast.classList.remove('opacity-0', 'translate-y-4');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-4');
+      }, 2600);
+    }
+
+    // Copy Referral Code (iFrame-safe execCommand fallback)
+    function copyReferralCode() {
+      const cfg = getSiteConfig();
+      const tempInput = document.createElement('input');
+      tempInput.value = cfg.refCode;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      try {
+        document.execCommand('copy');
+        showToast(`Invite Code "${cfg.refCode}" copied!`);
+      } catch (err) {
+        showToast(`Invite Code: ${cfg.refCode}`);
+      }
+      document.body.removeChild(tempInput);
+    }
+
+    // Toggle Table of Contents
+    function toggleTOC() {
+      const tocList = document.getElementById('toc-list');
+      tocList.classList.toggle('hidden');
+    }
+
+    // Toggle FAQ Accordion
+    function toggleFaq(buttonEl) {
+      const item = buttonEl.closest('.faq-item');
+      item.classList.toggle('active');
+    }
+
+    // Interactive 5-Star Rating
+    let hasRated = false;
+    function ratePost(stars) {
+      const starButtons = document.querySelectorAll('.star-btn');
+      starButtons.forEach((btn, idx) => {
+        if (idx < stars) {
+          btn.classList.remove('text-slate-300');
+          btn.classList.add('text-amber-400');
+        } else {
+          btn.classList.remove('text-amber-400');
+          btn.classList.add('text-slate-300');
+        }
+      });
+
+      if (!hasRated) {
+        const voteEl = document.getElementById('vote-count');
+        const currentVotes = parseInt(voteEl.textContent, 10) || 44590659;
+        voteEl.textContent = currentVotes + 1;
+        hasRated = true;
+      }
+      showToast(`Thank you! You rated ${stars} out of 5 stars.`);
+    }
+
+    // =========================================================
+    // HIDDEN ADMIN PANEL LOGIC
+    // =========================================================
+    function openAdminPasswordModal() {
+      const modal = document.getElementById('admin-password-modal');
+      const input = document.getElementById('admin-password-input');
+      const err = document.getElementById('admin-password-error');
+      input.value = '';
+      err.classList.add('hidden');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      setTimeout(() => input.focus(), 100);
+    }
+
+    function closeAdminPasswordModal() {
+      const modal = document.getElementById('admin-password-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function verifyAdminPassword(e) {
+      e.preventDefault();
+      const entered = document.getElementById('admin-password-input').value;
+      const cfg = getSiteConfig();
+
+      if (entered === cfg.adminPassword) {
+        closeAdminPasswordModal();
+        openAdminPanel();
+      } else {
+        document.getElementById('admin-password-error').classList.remove('hidden');
+      }
+    }
+
+    function openAdminPanel() {
+      const cfg = getSiteConfig();
+      document.getElementById('cfg-brand-name').value = cfg.brandName;
+      document.getElementById('cfg-register-url').value = cfg.registerUrl;
+      document.getElementById('cfg-official-domain').value = cfg.officialDomain;
+      document.getElementById('cfg-ref-code').value = cfg.refCode;
+      document.getElementById('cfg-welcome-bonus').value = cfg.welcomeBonus;
+      document.getElementById('cfg-app-version').value = cfg.appVersion;
+      document.getElementById('cfg-app-size').value = cfg.appSize;
+      document.getElementById('cfg-support-url').value = cfg.supportUrl;
+      document.getElementById('cfg-new-password').value = '';
+
+      const panel = document.getElementById('admin-panel-modal');
+      panel.classList.remove('hidden');
+      panel.classList.add('flex');
+    }
+
+    function closeAdminPanel() {
+      const panel = document.getElementById('admin-panel-modal');
+      panel.classList.add('hidden');
+      panel.classList.remove('flex');
+    }
+
+    function saveAdminSettings(e) {
+      e.preventDefault();
+      const current = getSiteConfig();
+      const newPass = document.getElementById('cfg-new-password').value.trim();
+
+      const updated = {
+        brandName: document.getElementById('cfg-brand-name').value.trim() || DEFAULT_CONFIG.brandName,
+        registerUrl: document.getElementById('cfg-register-url').value.trim() || DEFAULT_CONFIG.registerUrl,
+        officialDomain: document.getElementById('cfg-official-domain').value.trim() || DEFAULT_CONFIG.officialDomain,
+        refCode: document.getElementById('cfg-ref-code').value.trim() || DEFAULT_CONFIG.refCode,
+        welcomeBonus: document.getElementById('cfg-welcome-bonus').value.trim() || DEFAULT_CONFIG.welcomeBonus,
+        appVersion: document.getElementById('cfg-app-version').value.trim() || DEFAULT_CONFIG.appVersion,
+        appSize: document.getElementById('cfg-app-size').value.trim() || DEFAULT_CONFIG.appSize,
+        supportUrl: document.getElementById('cfg-support-url').value.trim() || DEFAULT_CONFIG.supportUrl,
+        adminPassword: newPass ? newPass : current.adminPassword
+      };
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+      applySiteConfig();
+      closeAdminPanel();
+      showToast('Settings updated across the entire landing page!');
+    }
+
+    function resetDefaultSettings() {
+      localStorage.removeItem(STORAGE_KEY);
+      applySiteConfig();
+      openAdminPanel();
+      showToast('Restored default Jai Club settings.');
+    }
+
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', applySiteConfig);
+  </script>
+</body>
+</html>
+```
